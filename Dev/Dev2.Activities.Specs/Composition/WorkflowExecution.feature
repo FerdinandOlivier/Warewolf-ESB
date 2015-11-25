@@ -4218,7 +4218,7 @@ Scenario: Workflow with AsyncLogging and ForEach
 	 And the delta between "first time" and "second time" is less than "1200" milliseconds
 
 #FOREACH - Huggs: @Leroy Please check MasterTest workflow and ensure it is correct. Once correct unignore this test and commit the code.
-@ignore
+
 Scenario: ForEach Acceptance Tests
 	  Given I have a workflow "ForEachMasterTest"
 	  And "ForEachMasterTest" contains "Testing/For Each/MasterTest" from server "localhost" with mapping as
@@ -4228,8 +4228,9 @@ Scenario: ForEach Acceptance Tests
 	  When "ForEachMasterTest" is executed
 	Then the workflow execution has "NO" error
 	  And the 'Testing/For Each/MasterTest' in Workflow 'ForEachMasterTest' debug outputs as
-	  |                   |
-	  | [[Result]] = Pass |
+	  |                               |
+	  | [[TestResult]] = Pass         |
+	  | [[Result]] = All Tests Passed |
 
 
 #Wolf-1102
