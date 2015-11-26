@@ -19,7 +19,7 @@ namespace Dev2.Tests.Runtime.Security
     [TestClass]
     public class ServerSecurityServiceTests
     {
-        static void WaitForEvents()
+        public static void WaitForEvents()
         {
             Thread.Sleep(2000); // wait for event to fire
         }
@@ -107,29 +107,6 @@ namespace Dev2.Tests.Runtime.Security
 
             //------------Assert Results-------------------------
             Assert.AreEqual(1, serverSecurityService.OnFileRenamedHitCount);
-
-            serverSecurityService.Dispose();
-        }
-
-        [TestMethod]
-        [Owner("Trevor Williams-Ros")]
-        [TestCategory("ServerSecurityService_OnFileChanged")]
-        public void ServerSecurityService_OnFileChanged_RaisingEvents_DisabledAndEnabled()
-        {
-            //------------Setup for test--------------------------
-            var fileName = string.Format("secure_{0}.config", Guid.NewGuid());
-            File.WriteAllText(fileName, @"xxx");
-
-            var serverSecurityService = new TestServerSecurityService(fileName);
-
-            //------------Execute Test---------------------------
-            File.WriteAllText(fileName, @"ssss");
-            WaitForEvents();
-
-            //------------Assert Results-------------------------
-            Assert.AreEqual(2, serverSecurityService.OnFileChangedEnableRaisingEventsEnabled.Count);
-            Assert.IsFalse(serverSecurityService.OnFileChangedEnableRaisingEventsEnabled[0]);
-            Assert.IsTrue(serverSecurityService.OnFileChangedEnableRaisingEventsEnabled[1]);
 
             serverSecurityService.Dispose();
         }

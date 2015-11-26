@@ -2,7 +2,7 @@
 	In order to execute sequence 
 	As a Warewolf user
 	I want to a tool that will allow me to construct and execute tools and services in sequence
-
+	
 Scenario: Execute Sequence with Assign
           Given I have a Sequence "Test"
           And "Test" contains an Assign "TestAssign" as

@@ -37,9 +37,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
@@ -89,6 +86,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Dev2.Runtime.Tests\Security\ServerSecurityServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +137,14 @@
     <ProjectReference Include="..\Dev2.IntegrationTests\Dev2.Integration.Tests.csproj">
       <Project>{2c7f0e32-c4c4-422d-a767-92f3b3510392}</Project>
       <Name>Dev2.Integration.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dev2.Runtime.Services\Dev2.Runtime.Services.csproj">
+      <Project>{B48FFDF5-6B1B-4279-A93F-2913B9D3BE83}</Project>
+      <Name>Dev2.Runtime.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dev2.Runtime.Tests\Dev2.Runtime.Tests.csproj">
+      <Project>{85617545-2121-4683-9828-daedb5878ce9}</Project>
+      <Name>Dev2.Runtime.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dev2.Studio.Core\Dev2.Studio.Core.csproj">
       <Project>{A58B157B-960B-4E84-8957-24E4884C5C77}</Project>
