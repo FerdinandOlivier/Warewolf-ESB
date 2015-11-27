@@ -153,6 +153,35 @@ namespace Dev2.Activities.Specs.Toolbox.Utility.DateandTime
             {
                 actualValue = actualValue.Replace("(GMT+", "(UTC+").Replace("(GMT-", "(UTC-");
             }
+            if (expectedResult.Contains("A.D.") || expectedResult.Contains("AD"))
+            {
+                var eraValue = CultureInfo.InvariantCulture.DateTimeFormat.GetEra("A.D.");
+                if (eraValue == -1) //The Era value does not use punctuation
+                {
+                    actualValue = actualValue.Replace("A.D.", "AD");
+                    expectedResult = expectedResult.Replace("A.D.", "AD");
+                }
+                else
+                {
+                    actualValue = actualValue.Replace("AD", "A.D.");
+                    expectedResult = expectedResult.Replace("AD", "A.D.");
+                }
+            }
+            if (expectedResult.Contains("B.C.") || expectedResult.Contains("BC"))
+            {
+                var eraValue = CultureInfo.InvariantCulture.DateTimeFormat.GetEra("A.D.");
+                if (eraValue == -1) //The Era value does not use punctuation
+                {
+                    actualValue = actualValue.Replace("B.C.", "BC");
+                    expectedResult = expectedResult.Replace("B.C.", "BC");
+                }
+                else
+                {
+                    actualValue = actualValue.Replace("BC", "B.C.");
+                    expectedResult = expectedResult.Replace("BC", "B.C.");
+                }
+
+            }
             if (string.IsNullOrEmpty(expectedResult))
             {
                 Assert.IsTrue(string.IsNullOrEmpty(actualValue));

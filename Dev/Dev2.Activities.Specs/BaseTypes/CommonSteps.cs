@@ -773,21 +773,34 @@ namespace Dev2.Activities.Specs.BaseTypes
                 }
             }
 
-            if (expectedValue.Contains("A.D."))
+            if (expectedValue.Contains("A.D.") || expectedValue.Contains("AD"))
             {
                 var eraValue = CultureInfo.InvariantCulture.DateTimeFormat.GetEra("A.D.");
                 if (eraValue == -1) //The Era value does not use punctuation
                 {
                     actualValue = actualValue.Replace("A.D.", "AD");
+                    expectedValue = expectedValue.Replace("A.D.", "AD");
+                }
+                else
+                {
+                    actualValue = actualValue.Replace("AD", "A.D.");
+                    expectedValue = expectedValue.Replace("AD", "A.D.");
                 }
             }
-            if (expectedValue.Contains("B.C."))
+            if (expectedValue.Contains("B.C.") || expectedValue.Contains("BC"))
             {
                 var eraValue = CultureInfo.InvariantCulture.DateTimeFormat.GetEra("A.D.");
                 if (eraValue == -1) //The Era value does not use punctuation
                 {
                     actualValue = actualValue.Replace("B.C.", "BC");
+                    expectedValue = expectedValue.Replace("B.C.", "BC");
                 }
+                else
+                {
+                    actualValue = actualValue.Replace("BC", "B.C.");
+                    expectedValue = expectedValue.Replace("BC", "B.C.");
+                }
+
             }
             if (string.IsNullOrEmpty(type) && actualValue != null)
             {
